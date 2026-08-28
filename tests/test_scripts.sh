@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-ROOT=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+ROOT=$(CDPATH='' cd -- "$(dirname -- "$0")/.." && pwd)
 
 # Wrappers must reject malformed input without touching local files.
 if "$ROOT/scripts/fix-provider-dns.sh" --provider example-provider >/dev/null 2>&1; then
