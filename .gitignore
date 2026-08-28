@@ -1,0 +1,30 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Local provider data and runtime artifacts
+state/
+backups/
+backup/
+logs/
+*.log
+profiles.yaml
+profiles/
+*.yaml.local
+config/providers.yaml
+config/providers.local.yaml
+
+# Credentials and local environment
+.env
+.env.*
+!.env.example
+*.secret
+*.token
+
+# Editor and OS files
+.vscode/
+.idea/

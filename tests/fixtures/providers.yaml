@@ -1,0 +1,10 @@
+providers:
+  example-provider:
+    profile_name: Example Provider
+    server_suffixes:
+      - .example.invalid
+    fake_ip_filters:
+      - +.example.invalid
+    proxy_server_nameservers:
+      - 9.9.9.9
+      - 1.1.1.1

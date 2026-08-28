@@ -1,0 +1,16 @@
+# Copy this file outside the repository and customize locally.
+# Never commit real provider domains, profile URLs, tokens, UUIDs, or node data.
+providers:
+  example-provider:
+    # Exact remote profile name in Clash Verge profiles.yaml.
+    profile_name: Example Provider
+    # Matching is case-insensitive and respects hostname boundaries.
+    server_suffixes:
+      - .example.invalid
+    # Domains that must not receive a fake-IP address.
+    fake_ip_filters:
+      - +.example.invalid
+    # Direct DNS resolvers for proxy server hostnames.
+    proxy_server_nameservers:
+      - 9.9.9.9
+      - 1.1.1.1

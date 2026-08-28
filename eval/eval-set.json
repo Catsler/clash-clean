@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "cases": [
+    {
+      "id": "tun-no-traffic",
+      "prompt": "Clash TUN 已打开但浏览器没有流量，怎么按层诊断？",
+      "should_trigger": true
+    },
+    {
+      "id": "fake-ip-timeout",
+      "prompt": "节点拨号到 198.18.0.4 超时，检查 fake-IP DNS。",
+      "should_trigger": true
+    },
+    {
+      "id": "provider-dns",
+      "prompt": "provider 节点域名被解析成 fake-IP，预览 DNS merge 修复。",
+      "should_trigger": true
+    },
+    {
+      "id": "node-delay",
+      "prompt": "检查 Mihomo 当前 selector 的延迟。",
+      "should_trigger": true
+    },
+    {
+      "id": "subscription-status",
+      "prompt": "订阅返回 403，但不要删除本地缓存，帮我确认状态。",
+      "should_trigger": true
+    },
+    {
+      "id": "flush-dns",
+      "prompt": "在 macOS 上刷新 DNS 缓存。",
+      "should_trigger": true
+    },
+    {
+      "id": "skill-install",
+      "prompt": "安装 clean-clash skill 并说明安全边界。",
+      "should_trigger": true
+    },
+    {
+      "id": "unrelated-git",
+      "prompt": "帮我整理一个普通 Git 分支。",
+      "should_trigger": false
+    },
+    {
+      "id": "unrelated-docker",
+      "prompt": "写一个 Docker Compose 数据库服务。",
+      "should_trigger": false
+    },
+    {
+      "id": "unrelated-ui",
+      "prompt": "设计一个电商登录页面。",
+      "should_trigger": false
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+items:
+  - type: remote
+    name: Example Provider
+    url: https://subscription.example.invalid/path?case=fixture
+    option:
+      merge: example-merge
+  - type: local
+    name: Local Profile
+    file: local.yaml

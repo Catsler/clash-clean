@@ -1,0 +1,14 @@
+mode: rule
+tun:
+  enable: true
+dns:
+  enhanced-mode: fake-ip
+  fake-ip-filter:
+    - localhost
+  proxy-server-nameserver:
+    - udp://127.0.0.1:7874
+proxies:
+  - name: Example node
+    type: trojan
+    server: edge.example.invalid
+    port: 443

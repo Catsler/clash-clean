@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: macos-14
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4.2.2
+      - name: Set up Python
+        uses: actions/setup-python@v5.6.0
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt pytest
+      - name: Python tests
+        run: python -m pytest -q
+      - name: Shell syntax and wrapper checks
+        run: |
+          bash -n scripts/*.sh
+          bash tests/test_scripts.sh
+          brew list shellcheck >/dev/null 2>&1 || brew install shellcheck
+          shellcheck scripts/*.sh tests/test_scripts.sh
+      - name: Parse data files
+        run: |
+          python -m json.tool eval/eval-set.json >/dev/null
+          python - <<'PY'
+          from pathlib import Path
+          import yaml
+          for path in [
+              Path('config/providers.example.yaml'),
+              *Path('tests/fixtures').glob('*.yaml'),
+          ]:
+              yaml.safe_load(path.read_text())
+          PY
+      - name: Check whitespace
+        run: git diff --check
+      - name: Scan source for local secrets and paths
+        run: |
+          ! grep -RInE '(/Users/|/private/tmp/)' scripts config tests eval README.md SKILL.md
+          ! grep -RIn 'sudo -S' scripts config tests eval README.md SKILL.md
+          ! grep -RInE 'password[[:space:]]*[:=]' scripts config tests eval README.md SKILL.md
+          ! grep -RIn 'BEGIN RSA PRIVATE KEY' scripts config tests eval README.md SKILL.md
+          ! grep -RInE 'https?://[^[:space:]]+[?&](token|key|secret)(=|&)' scripts config tests eval README.md SKILL.md
