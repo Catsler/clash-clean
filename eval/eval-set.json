@@ -37,6 +37,16 @@
       "should_trigger": true
     },
     {
+      "id": "curl-browser-divergence",
+      "prompt": "curl 能通但 Chrome 打不开网页，clash 检查",
+      "should_trigger": true
+    },
+    {
+      "id": "dns-override-reset",
+      "prompt": "开完 DNS 覆写后翻墙坏了，系统 DNS 像被污染",
+      "should_trigger": true
+    },
+    {
       "id": "unrelated-git",
       "prompt": "帮我整理一个普通 Git 分支。",
       "should_trigger": false
